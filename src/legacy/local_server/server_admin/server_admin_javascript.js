@@ -2878,6 +2878,7 @@ function BMLT_Server_Admin()
     *   \brief
     ****************************************************************************************/
     this.getAddressLine = function (in_meeting_id) {
+        var meeting_location_text_item = document.getElementById('bmlt_admin_single_meeting_editor_' + in_meeting_id + '_meeting_location_text_input');
         var meeting_street_text_item = document.getElementById('bmlt_admin_single_meeting_editor_' + in_meeting_id + '_meeting_street_text_input');
         var meeting_borough_text_item = document.getElementById('bmlt_admin_single_meeting_editor_' + in_meeting_id + '_meeting_borough_text_input');
         var meeting_city_text_item = document.getElementById('bmlt_admin_single_meeting_editor_' + in_meeting_id + '_meeting_city_text_input');
@@ -2898,7 +2899,7 @@ function BMLT_Server_Admin()
         };
 
         // What we do here, is try to create a readable address line to be sent off for geocoding. We just try to clean it up as much as possible.
-        var address_line = sprintf('%s,%s,%s,%s,%s,%s', street_text, borough_text, city_text, state_text, zip_text, nation_text);
+        var address_line = sprintf('%s,%s,%s,%s,%s,%s,%s', meeting_location_text_item, street_text, borough_text, city_text, state_text, zip_text, nation_text);
 
         address_line = address_line.replace(/,+/g, ', ');
         address_line = address_line.replace(/^, /g, '');
